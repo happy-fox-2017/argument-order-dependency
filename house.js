@@ -2,20 +2,20 @@
 
 class House {
 
-  constructor(address, square_feet, num_bedrooms, num_baths, cost, down_payment, sold, short_sale, has_tenants) {
-    this.address = address
-    this.square_feet = square_feet
-    this.num_bedrooms = num_bedrooms || 3
-    this.num_baths = num_baths || 2
-    this.cost = cost || 320000
-    this.down_payment = down_payment || 0.20
-    this.sold = sold || false
-    this.short_sale = short_sale
-    this.has_tenants = has_tenants || false
+  constructor(params) {
+    this.address = params.address
+    this.square_feet = params.sqFeet
+    this.num_bedrooms = params.bedrooms || 3
+    this.num_baths = params.baths || 2
+    this.cost = params.cost || 320000
+    this.down_payment = params.dp || 0.20
+    this.sold = params.sold || false
+    this.short_sale = params.shortSale
+    this.has_tenants = params.tenants || false
   }
 
   obscure_address() {
-    this.address.replace(/.{10}$/g, '****')
+    return this.address.replace(/.{10}$/g, '****')
   }
 
   buy(money, good_credit) {
@@ -29,10 +29,23 @@ class House {
   }
 
   to_s() {
-    return `${this.obscure_address()} : ${this.square_feet} sq. ft., ${this.num_bedrooms} bed, ${this.num_baths} bath. ${this.cost}`
+    return `${this.obscure_address()} : ${this.square_feet} sq. ft., ${this.num_bedrooms} bed, ${this.num_baths} bath. ${this.cost}$`
   }
 }
 
-const cool = new House('address', 100, 2, 2, 12345, 12345, true, true)
 
+
+let params = {
+  address: 'jl. Ridwan Kamil 10',
+  sqFeet: 21,
+  bedrooms: 2,
+  baths: 2,
+  cost: 15000,
+  dp: 0.3,
+  sold: false,
+  shortSale: false,
+  tenants: true
+}
+
+const cool = new House(params)
 console.log(cool.to_s())
