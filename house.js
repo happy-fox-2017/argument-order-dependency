@@ -2,20 +2,44 @@
 
 class House {
 
-  constructor(address, square_feet, num_bedrooms, num_baths, cost, down_payment, sold, short_sale, has_tenants) {
-    this.address = address
-    this.square_feet = square_feet
-    this.num_bedrooms = num_bedrooms || 3
-    this.num_baths = num_baths || 2
-    this.cost = cost || 320000
-    this.down_payment = down_payment || 0.20
-    this.sold = sold || false
-    this.short_sale = short_sale
-    this.has_tenants = has_tenants || false
+  constructor(component) {
+    //dengan hasOwnProperty
+    if(component.hasOwnProperty('address')) {
+      this.address = component['address'];
+    } else {
+      this.address = 'kosong'
+    }
+
+    if(component.hasOwnProperty('square_feet')) {
+      this.square_feet = component['square_feet'] ;
+    } else {
+      this.square_feet = 'kosong';
+    }
+
+    if(component.hasOwnProperty('num_bedrooms')) {
+      this.num_bedrooms = component['num_bedrooms']
+    } else {
+      this.num_bedrooms = 1 ; //default value = 1,jika di deklarasi Object tidak di deklarasiin makan output value 1
+    }
+
+    if(component.hasOwnProperty('num_baths')){
+      this.num_baths = component['num_baths'] || 2;
+    } else {
+      this.num_baths = 2;
+    }
+
+    //dengan named argument
+    this.cost = component['cost'] || 320000;
+    this.down_payment = component['down_payment'] || 0.20;
+    this.sold = component['sold'] || false;
+    this.short_sale = component['short_sale'] || ' Data Kosong';
+    this.has_tenants = component['has_tenants'] || false;
   }
 
   obscure_address() {
-    this.address.replace(/.{10}$/g, '****')
+    //console.log(this.address);
+     return this.address.replace(/.{10}$/g, '****');
+
   }
 
   buy(money, good_credit) {
@@ -33,6 +57,16 @@ class House {
   }
 }
 
-const cool = new House('address', 100, 2, 2, 12345, 12345, true, true)
+
+const cool = new House(
+  {
+  'address' : 'jalan jatiawaringin',
+  //'square_feet' : 7,
+  'num_bedrooms' : 3,
+  'num_baths' : 8,
+  'cost' : 34000,
+
+});
+
 
 console.log(cool.to_s())
