@@ -9,7 +9,7 @@ class House {
     this.num_baths = options['num_baths'] || 2
     this.cost = options['cost'] || 320000
     this.down_payment = options['down_payment'] || 0.20
-    this.sold = false
+    this.sold = options['sold'] || false 
     this.short_sale = options['short_sale']
     this.has_tenants = options['has_tenants'] || false
   }
