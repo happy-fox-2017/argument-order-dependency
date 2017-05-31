@@ -4,14 +4,14 @@ class House {
 
   constructor(param) {
     this.address = param.hasOwnProperty('address') ? param.address : 'N/A';
-    this.square_feet = param.square_feet
-    this.num_bedrooms = param.num_bedrooms || 3
-    this.num_baths = param.num_baths || 2
-    this.cost = param.cost || 320000
-    this.down_payment = param.down_payment || 0.20
-    this.sold = param.sold || false
-    this.short_sale = param.short_sale
-    this.has_tenants = param.has_tenants || false
+    this.square_feet = param.hasOwnProperty('square_feet') ? param.square_feet : 'N/A';
+    this.num_bedrooms = param.hasOwnProperty('num_bedrooms') ? param.num_bedrooms : 3;
+    this.num_baths = param.hasOwnProperty('num_baths') ? param.num_baths : 2;
+    this.cost = param.hasOwnProperty('cost') ? param.cost : 320000;
+    this.down_payment = param.hasOwnProperty('down_payment') ? param.down_payment : 0.20;
+    this.sold = param.hasOwnProperty('sold') ? param.sold : false;
+    this.short_sale = param.hasOwnProperty('short_sale') ? param.short_sale : false;
+    this.has_tenants = param.hasOwnProperty('has_tenants') ? param.has_tenants : false;
   }
 
   obscure_address() {
@@ -48,5 +48,5 @@ let houseInfo = {
 const cool = new House(houseInfo);
 
 console.log(cool.to_s());
-console.log(cool.obscure_address());
+console.log(cool);
 
