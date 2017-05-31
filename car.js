@@ -2,31 +2,49 @@
 
 class Car {
 
-  start_car(options) {
-    if (options && options['headlights']) {
-      this.headlights = options['headlights']
-    } else {
-      this.headlights = true
-    }
+  startCar(options) {
+    // if (options && options['headlights']) {
+    //   this.headlights = options['headlights']
+    // } else {
+    //   this.headlights = true
+    // }
+    //
+    // if (options && options['gear']) {
+    //   this.gear = options['gear']
+    // } else {
+    //   this.gear = 1
+    // }
 
-    if (options && options['gear']) {
-      this.gear = options['gear']
+    if (options) {
+      if (Object.prototype.hasOwnProperty.call(options, 'headlights')) {
+        this.headlights = options.headlights;
+      } else {
+        this.headlights = true;
+      }
+
+      if (Object.prototype.hasOwnProperty.call(options, 'gear')) {
+        this.gear = options.gear;
+      } else {
+        this.gear = true;
+      }
     } else {
-      this.gear = 1
+      this.headlights = true;
+      this.gear = true;
     }
   }
 }
 
-const herbie = new Car()
+const herbie = new Car();
 
 // When we start the car, the headlights should be on by default
-herbie.start_car()
+herbie.startCar();
 
-console.log(herbie.headlights) // true
+console.log(herbie.headlights); // true
 
 // But what happens when we want to start without headlights?
-herbie.start_car({
-  headlights: false
-})
+herbie.startCar({
+  headlights: false,
+});
 
-console.log(herbie.headlights) // true ...KOK BISA?!
+console.log(herbie.headlights); // true ...KOK BISA?!
+
