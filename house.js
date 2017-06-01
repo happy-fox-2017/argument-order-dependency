@@ -2,20 +2,21 @@
 
 class House {
 
-  constructor(address, square_feet, num_bedrooms, num_baths, cost, down_payment, sold, short_sale, has_tenants) {
-    this.address = address
-    this.square_feet = square_feet
-    this.num_bedrooms = num_bedrooms || 3
-    this.num_baths = num_baths || 2
-    this.cost = cost || 320000
-    this.down_payment = down_payment || 0.20
-    this.sold = sold || false
-    this.short_sale = short_sale
-    this.has_tenants = has_tenants || false
-  }
+  // constructor(address, square_feet, num_bedrooms, num_baths, cost, down_payment, sold, short_sale, has_tenants) {
+  constructor(namedArguments) {
+    this.address = namedArguments.address;
+    this.square_feet = namedArguments.square_feet;
+    this.num_bedrooms = namedArguments.num_bedrooms || 3;
+    this.num_baths = namedArguments.num_baths || 2;
+    this.cost = namedArguments.cost || 320000;
+    this.down_payment = namedArguments.down_payment || 0.20;
+    this.sold = namedArguments.old || false;
+    this.short_sale = namedArguments.hort_sale;
+    this.has_tenants = namedArguments.has_tenants || false;
+  } //Bener juga, lebih enak begini ya huehuehue
 
   obscure_address() {
-    this.address.replace(/.{10}$/g, '****')
+    return this.address.replace(/.{10}$/g, '****')
   }
 
   buy(money, good_credit) {
@@ -33,6 +34,18 @@ class House {
   }
 }
 
-const cool = new House('address', 100, 2, 2, 12345, 12345, true, true)
+var namedArguments = {
+  address: 'Jl. Pakis VIC Blok BB 21 No. 14',
+  square_feet: 100,
+  num_bedrooms: 2,
+  num_baths: 2,
+  cost: 12345,
+  down_payment:12345,
+  sold: true,
+  short_sale: true
+}
+//Ohh, jadi bisa gak harus urut. Asik
+
+const cool = new House(namedArguments);
 
 console.log(cool.to_s())
