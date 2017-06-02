@@ -34,6 +34,6 @@ class House {
   }
 }
 
-const cool = new House({address: 'Jl. Ahmad Yani 2', square_feet: 100, num_bedrooms: 2, num_baths: 2, cost: 12345, down_payment: 12345, sold: true, has_tenants: true})
+const cool = new House({address: 'Jl. Ahmad Yani 2', square_feet: 100, num_bedrooms: 2, num_baths: 0, cost: 12345, down_payment: 12345, sold: true, has_tenants: true})
 
 console.log(cool.to_s())
