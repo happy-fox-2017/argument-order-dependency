@@ -33,6 +33,15 @@ class House {
   }
 }
 
-const cool = new House('address', 100, 2, 2, 12345, 12345, true, true);
+const cool = new House({
+  address: 'address',
+  squareFeet: 100,
+  numBedrooms: 2,
+  numBaths: 2,
+  cost: 12345,
+  downPayment: 12345,
+  sold: true,
+  shortSale: true,
+});
 
 console.log(cool.toS());
