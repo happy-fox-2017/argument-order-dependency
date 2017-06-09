@@ -10,6 +10,9 @@ class Car {
 
     if (options && options.hasOwnProperty('gear')) {
       this.gear = options['gear']
+      if (this.gear !== +(this.gear)) {
+        this.gear = 1
+      }
     } else {
       this.gear = 1
     }
@@ -25,7 +28,9 @@ console.log(herbie.headlights) // true
 
 // But what happens when we want to start without headlights?
 herbie.start_car({
-  headlights: false
+  headlights: false,
+  gear: 2
 })
 
 console.log(herbie.headlights) // true ...KOK BISA?!
+console.log(herbie.gear);
